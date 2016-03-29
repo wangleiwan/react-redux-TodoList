@@ -1,14 +1,14 @@
-import React, {PropTypes, Component} from 'react';
+import React, { Component } from 'react';
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
-		this.state = {
-			todos: [
-				'make a website',
-				'do grocery shopping'
-			]
-		}
+			this.state = {
+				todos: [
+					'make a website',
+					'do grocery shopping'
+				]
+			}
   }
 
   render() {
@@ -28,6 +28,3 @@ export default class TodoList extends Component {
 		);
 	}
 }
-
-TodoList.propTypes = {
-};
