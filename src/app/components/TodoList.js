@@ -12,13 +12,11 @@ export default class TodoList extends Component {
   }
 
   handleEdit() {
-    console.log('hfd');
   }
 
   render() {
-    const todos = this.props.todos.map((todo) => {
-      return (
-        <TableRow>
+    const todos = this.props.todos.map((todo, index) => (
+        <TableRow key={index}>
           <TableRowColumn ref="row">{todo.todo}</TableRowColumn>
           <TableRowColumn>
             <RaisedButton label="Edit" />
@@ -26,8 +24,7 @@ export default class TodoList extends Component {
             <RaisedButton label="Delete" />
           </TableRowColumn>
         </TableRow>
-      );
-    });
+      ));
 
     return (
       <Table>
