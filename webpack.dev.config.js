@@ -6,7 +6,7 @@ var ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 module.exports = {
   context: path.join(__dirname, 'src'),
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8080',
+    'webpack-dev-server/client?http://0.0.0.0:8081',
     'webpack/hot/only-dev-server',
     './index'
   ],
