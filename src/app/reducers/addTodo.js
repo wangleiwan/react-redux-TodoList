@@ -9,11 +9,11 @@ const initialState = {
 
 const addToDo = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_TO_DO:
+    case ADD_TO_DO: {
       const newTodo = { todo: action.value, isComplete: false, isEditting: false };
-      let newTodos = [];
-      newTodos = state.todos.push(newTodo);
-      return Object.assign({}, state, newTodos);
+      const newTodos = [...state.todos, newTodo];
+      return Object.assign({}, state, { todos: newTodos });
+    }
     default:
       return state;
   }

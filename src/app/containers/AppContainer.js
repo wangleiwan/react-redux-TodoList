@@ -43,27 +43,29 @@ class AppContainer extends Component {
             <ContentAdd />
           </FloatingActionButton>
         </div>
+        {this.props.todos.todos.length}
         <TodoList todos={this.props.todos.todos} />
       </div>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => (
+  {
     actions: bindActionCreators(todoActions, dispatch),
-  };
-};
+  }
+);
 
-const mapStateToProps = (state) => {
-  return {
+
+const mapStateToProps = (state) => (
+  {
     todos: state.addToDo,
-  };
-};
+  }
+);
 
 AppContainer.propTypes = {
   actions: PropTypes.object,
-  todos: PropTypes.array,
+  todos: PropTypes.object,
 };
 
 export default connect(
