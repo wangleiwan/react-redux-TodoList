@@ -24,26 +24,19 @@ class AppContainer extends Component {
   }
 
   render() {
-    const style = {
-      container: {
-        width: 650,
-        marginLeft: 50,
-      },
-      header: {
-        width: '50%',
-        margin: '0 auto',
-      },
-    };
     return (
-      <div style={style.container}>
-        <div style={style.header} >
+      <div className="container">
+        <div className="header" >
           <h1>To Do List</h1>
-          <TextField ref="input" hintText="Add TO DO" />
-          <FloatingActionButton mini onMouseDown={this.handleAddToDo}>
-            <ContentAdd />
-          </FloatingActionButton>
+          <div className="input">
+            <div className="textField">
+              <TextField ref="input" hintText="Add TO DO" />
+            </div>
+            <FloatingActionButton mini onMouseDown={this.handleAddToDo}>
+              <ContentAdd />
+            </FloatingActionButton>
+          </div>
         </div>
-        {this.props.todos.todos.length}
         <TodoList todos={this.props.todos.todos} />
       </div>
     );

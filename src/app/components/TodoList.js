@@ -1,37 +1,39 @@
 import React, { PropTypes, Component } from 'react';
-import Table from 'material-ui/lib/table/table';
-import TableRow from 'material-ui/lib/table/table-row';
-import TableRowColumn from 'material-ui/lib/table/table-row-column';
-import TableBody from 'material-ui/lib/table/table-body';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleEdit() {
+    console.log(this.refs.todo);
+    // const rowNumber = this.refs.table.state.selectedRows[0];
+    // const value = this.refs.table.props.children[rowNumber].props.children[0].props.children;
+    // console.log(this.refs.table.state.selectedRows.length);
+
   }
 
   render() {
     const todos = this.props.todos.map((todo, index) => (
-        <TableRow key={index}>
-          <TableRowColumn ref="row">{todo.todo}</TableRowColumn>
-          <TableRowColumn>
-            <RaisedButton label="Edit" />
+        <li key={index} ref="todo">
+          <div className="todo">{todo.todo}</div>
+          <div className="buttons">
+            <RaisedButton label="Edit" onMouseDown={this.handleEdit}/>
             {' '}
             <RaisedButton label="Delete" />
-          </TableRowColumn>
-        </TableRow>
+          </div>
+        </li>
       ));
 
     return (
-      <Table>
-        <TableBody>
-        { todos }
-        </TableBody>
-      </Table>
+      <div className="todos">
+        <ul>
+          { todos }
+        </ul>
+      </div>
     );
   }
 }
