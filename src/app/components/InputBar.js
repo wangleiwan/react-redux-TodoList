@@ -25,9 +25,7 @@ class InputBar extends Component {
   render() {
     return (
       <div className="input">
-        <div className="textField">
-          <TextField ref="input" hintText="Add TO DO" />
-        </div>
+        <TextField ref="input" hintText="Add TO DO" fullWidth />
         <FloatingActionButton mini onMouseDown={this.handleAddToDo}>
           <ContentAdd />
         </FloatingActionButton>

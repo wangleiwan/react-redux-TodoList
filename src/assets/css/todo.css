@@ -18,12 +18,7 @@ div.input {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-div.todos {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 500px;
 }
 
 div.todo, input.edit {
@@ -31,13 +26,30 @@ div.todo, input.edit {
   font-size: 18px;
 }
 
-ul {
-  display: inline-block;
+div.todos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-li {
+ul.list {
+  width: 800px;
+  text-align: center;
+}
+
+li.list-item {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
+input.edit {
+  width: 60%;
+}
+
+div.buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  width: 35%;
 }
