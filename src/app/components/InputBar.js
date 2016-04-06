@@ -11,6 +11,7 @@ class InputBar extends Component {
   constructor(props) {
     super(props);
     this.handleAddToDo = this.handleAddToDo.bind(this);
+    this.handleKeyAddToDo = this.handleKeyAddToDo.bind(this);
   }
 
   handleAddToDo() {
@@ -22,11 +23,20 @@ class InputBar extends Component {
     }
   }
 
+  handleKeyAddToDo(event) {
+    const { actions } = this.props;
+    const value = this.refs.input.input.value;
+    if (event.keyCode === 13 && value !== '') {
+      actions.addToDo(value);
+      this.refs.input.input.value = '';
+    }
+  }
+
   render() {
     return (
       <div className="input">
         <div className="textField">
-          <TextField ref="input" hintText="Add TO DO" />
+          <TextField ref="input" hintText="Add TO DO" onKeyDown={this.handleKeyAddToDo} />
         </div>
         <FloatingActionButton mini onMouseDown={this.handleAddToDo}>
           <ContentAdd />
