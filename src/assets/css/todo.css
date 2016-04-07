@@ -16,7 +16,8 @@ h1.title {
 }
 
 .wrapper {
-  width: 50%;
+  width: 40%;
+  min-width: 611px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -76,6 +77,7 @@ div.buttons {
 
 ul.list {
   padding: 0;
+  position: relative;
 }
 
 li.row {
@@ -83,8 +85,19 @@ li.row {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  list-style: none;
 }
 
 li.row:hover{
   cursor: pointer;
+}
+
+/*fade in*/
+.animatedRow-appear {
+  opacity: 0.01;
+}
+
+.animatedRow-appear.animatedRow-appear-active {
+  opacity: 1;
+  transition: opacity .3s ease-in;
 }
