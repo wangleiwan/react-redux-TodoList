@@ -9,46 +9,76 @@ import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import Paper from 'material-ui/lib/paper';
 
+import { colors } from '../constants/colors';
+
 class TodoItem extends Component {
   constructor(props) {
     super(props);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.changeRowColor = this.changeRowColor.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleEdit() {
+  handleEdit(e) {
+    e.stopPropagation();
     const value = this.refs.todo.textContent;
     const index = this.props.index;
     this.props.actions.editToDo(value, index);
   }
 
-  handleSave() {
+  handleSave(e) {
+    e.stopPropagation();
     const value = this.refs.edit.value;
     const index = this.props.index;
     if (value !== '') {
-      this.props.actions.saveToDo(value, index);
+      if (e.type === 'keydown' && e.keyCode === 13) {
+        this.props.actions.saveToDo(value, index);
+      }
+      if (e.type === 'mousedown') {
+        this.props.actions.saveToDo(value, index);
+      }
     }
   }
 
-  handleDelete() {
+  handleDelete(e) {
+    e.stopPropagation();
     const index = this.props.index;
     this.props.actions.deleteToDo(index);
   }
 
+  handleClick(e) {
+    e.stopPropagation();
+  }
+
+  changeRowColor() {
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    this.props.actions.changeColor(color, this.props.index);
+  }
+
   render() {
+    const color = this.props.todo.color;
     const style = {
       width: 500,
       height: 70,
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      backgroundColor: color,
     };
     return (
-      <li className="row">
-        <Paper style={style} zDepth={1} >
+      <li className="row" onMouseDown={this.changeRowColor}>
+        <Paper ref="rowPaper" style={style} zDepth={1} >
         { this.props.todo.isEditting ?
-          <input ref="edit" className="edit" maxLength="55" defaultValue={this.props.todo.todo} />
+          <input
+            ref="edit"
+            className="edit"
+            maxLength="55"
+            defaultValue={this.props.todo.todo}
+            onKeyDown={this.handleSave}
+            onMouseDown={this.handleClick}
+          />
           :
           <div ref="todo" className="todo">{this.props.todo.todo}</div>
           }
