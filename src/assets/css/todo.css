@@ -67,6 +67,10 @@ div.todo {
   padding: 10px 0;
 }
 
+div.complete {
+  text-decoration: line-through;
+}
+
 div.textField {
   margin-right: 20px;
 }
@@ -78,6 +82,10 @@ div.buttons {
 ul.list {
   padding: 0;
   position: relative;
+}
+
+div.paper {
+  margin-right: 10px;
 }
 
 li.row {
