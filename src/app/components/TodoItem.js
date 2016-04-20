@@ -101,9 +101,9 @@ class TodoItem extends Component {
               ref="todo"
               className={
                 classnames({
-                'todo': true,
-                'complete': this.props.todo.isComplete,
-              })}
+                  todo: true,
+                  complete: this.props.todo.isComplete,
+                })}
             >{this.props.todo.todo}</div>
             }
             <div className="buttons">
