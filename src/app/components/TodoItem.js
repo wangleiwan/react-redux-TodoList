@@ -1,11 +1,9 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import * as todoActions from '../actions/Todos';
 
 import RaisedButton from 'material-ui/lib/raised-button';
-import Toggle from 'material-ui/lib/toggle';
 
 class TodoItem extends Component {
   constructor(props) {
@@ -13,7 +11,6 @@ class TodoItem extends Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleToggle = this.handleToggle.bind(this);
   }
 
   handleEdit() {
@@ -33,55 +30,22 @@ class TodoItem extends Component {
     this.props.actions.deleteToDo(index);
   }
 
-  handleToggle() {
-    const index = this.props.index;
-    const value = this.refs.todo.textContent;
-    this.props.actions.completeToDo(value, index);
-  }
-
   render() {
     return (
-      <li className={classnames({
-        'list-group-item list-item': true,
-        disabled: this.props.todo.isComplete,
-      })}
-      >
+      <li>
       { this.props.todo.isEditting ?
-        <input
-          id="edit"
-          ref="edit"
-          className="form-control edit"
-          defaultValue={this.props.todo.todo}
-        />
+        <input ref="edit" className="edit" defaultValue={this.props.todo.todo} />
         :
         <div ref="todo" className="todo">{this.props.todo.todo}</div>
-        }
+      }
         <div className="buttons">
-          <Toggle
-            style={{
-              width: '55px',
-            }}
-            disabled={this.props.todo.isComplete}
-            onToggle={this.handleToggle}
-          />
-          { this.props.todo.isEditting ?
-          <RaisedButton
-            label="Save"
-            onMouseDown={this.handleSave}
-          />
+        { this.props.todo.isEditting ?
+          <RaisedButton label="Save" onMouseDown={this.handleSave} />
           :
-          <RaisedButton
-            label="Edit"
-            onMouseDown={this.handleEdit}
-            disabled={this.props.todo.isComplete}
-          />
-          }
+          <RaisedButton label="Edit" onMouseDown={this.handleEdit} />
+        }
           {' '}
-          <RaisedButton
-            label="Delete"
-            onMouseDown={this.handleDelete}
-            disabled={this.props.todo.isComplete}
-          />
+          <RaisedButton label="Delete" onMouseDown={this.handleDelete} />
         </div>
       </li>
     );
