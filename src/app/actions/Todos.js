@@ -2,6 +2,7 @@ import { ADD_TO_DO } from '../constants/ActionTypes';
 import { EDIT_TO_DO } from '../constants/ActionTypes';
 import { SAVE_TO_DO } from '../constants/ActionTypes';
 import { DELETE_TO_DO } from '../constants/ActionTypes';
+import { CHANGE_COLOR } from '../constants/ActionTypes';
 
 export function addToDo(value) {
   return {
@@ -29,6 +30,14 @@ export function saveToDo(value, index) {
 export function deleteToDo(index) {
   return {
     type: DELETE_TO_DO,
+    index,
+  };
+}
+
+export function changeColor(color, index) {
+  return {
+    type: CHANGE_COLOR,
+    color,
     index,
   };
 }

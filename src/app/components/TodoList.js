@@ -4,14 +4,13 @@ import TodoItem from './TodoItem';
 import { connect } from 'react-redux';
 
 export default class TodoList extends Component {
-
   render() {
     const todos = this.props.todos.todos.map((todo, index) =>
       <TodoItem key={index} todo={todo} index={index} />
     );
     return (
       <div className="todos">
-        <ul>
+        <ul className="list">
           { todos }
         </ul>
       </div>

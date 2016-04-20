@@ -1,10 +1,28 @@
 body {
-  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+h1.title {
+  margin: 0;
+  color: #d81e05;
+  padding: 10px 20px;
 }
 
 .container {
-  width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 
+.wrapper {
+  width: 40%;
+  min-width: 611px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 0.1em solid steelblue;
+  border-radius: 0.3em;
 }
 
 div.header {
@@ -12,32 +30,74 @@ div.header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 div.input {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
 div.todos {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-self: center;
 }
 
 div.todo, input.edit {
-  font-family:monospace;
+  width: 65%;
   font-size: 18px;
+  margin-left: 10px;
 }
 
-ul {
-  display: inline-block;
+input.edit {
+  height: 2em;
+  border: 0.1em solid steelblue;
+  border-radius: 0.3em;
+  padding: 0em 0.5em;
+  font-family: 'Roboto', sans-serif;
 }
 
-li {
+input.edit:focus {
+  outline: none;
+}
+
+div.todo {
+  word-wrap: break-word;
+  padding: 10px 0;
+}
+
+div.textField {
+  margin-right: 20px;
+}
+
+div.buttons {
+  margin-right: 10px;
+}
+
+ul.list {
+  padding: 0;
+  position: relative;
+}
+
+li.row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  list-style: none;
+}
+
+li.row:hover{
+  cursor: pointer;
+}
+
+/*fade in*/
+.animatedRow-appear {
+  opacity: 0.01;
+}
+
+.animatedRow-appear.animatedRow-appear-active {
+  opacity: 1;
+  transition: opacity .3s ease-in;
 }
