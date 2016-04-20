@@ -4,7 +4,7 @@ class AppContainer extends Component {
   render() {
     return (
       <div>
-        Hello Scotiabank!
+        Hello World!
       </div>
     );
   }

@@ -1,7 +1,7 @@
 {
-  "name": "scotia-wealth-mobile-app",
+  "name": "react-redux-webpack-app",
   "version": "1.0.0",
-  "description": "Scotia Wealth Mobile App",
+  "description": "react-redux-webpack-app",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -16,10 +16,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@172.25.6.106:gwms/scotiawealth.git"
+    "url": "https://github.com/wangleiwan/react-redux-webpack.git"
   },
-  "author": "Scotiabank Global Wealth",
-  "license": "ISC",
+  "author": "Lei Wang",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "6.7.4",
