@@ -2,6 +2,7 @@ import { ADD_TO_DO } from '../constants/ActionTypes';
 import { EDIT_TO_DO } from '../constants/ActionTypes';
 import { SAVE_TO_DO } from '../constants/ActionTypes';
 import { DELETE_TO_DO } from '../constants/ActionTypes';
+import { COMPLETE_TO_DO } from '../constants/ActionTypes';
 
 const initialState = {
   todos: [
@@ -38,6 +39,15 @@ const ToDos = (state = initialState, action) => {
     case DELETE_TO_DO: {
       const newTodos = [
         ...state.todos.slice(0, action.index),
+        ...state.todos.slice(action.index + 1),
+      ];
+      return Object.assign({}, state, { todos: newTodos });
+    }
+    case COMPLETE_TO_DO: {
+      const newTodo = { todo: action.value, isComplete: true, isEditting: false };
+      const newTodos = [
+        ...state.todos.slice(0, action.index),
+        newTodo,
         ...state.todos.slice(action.index + 1),
       ];
       return Object.assign({}, state, { todos: newTodos });
