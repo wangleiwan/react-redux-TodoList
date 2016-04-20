@@ -12,7 +12,7 @@ const DevTools = createDevTools(
     defaultPosition="right"
     defaultIsVisible={false}
   >
-    <LogMonitor theme="tomorrow" />
+    <LogMonitor theme="nicinabox" />
   </DockMonitor>
 );
 
