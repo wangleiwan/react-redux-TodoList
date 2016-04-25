@@ -3,6 +3,8 @@ import { EDIT_TO_DO } from '../constants/ActionTypes';
 import { SAVE_TO_DO } from '../constants/ActionTypes';
 import { DELETE_TO_DO } from '../constants/ActionTypes';
 import { CHANGE_COLOR } from '../constants/ActionTypes';
+import { COMPLETE_TO_DO } from '../constants/ActionTypes';
+import { FILTER_VIEW } from '../constants/ActionTypes';
 
 export function addToDo(value) {
   return {
@@ -34,10 +36,25 @@ export function deleteToDo(index) {
   };
 }
 
+export function completeToDo(value, index) {
+  return {
+    type: COMPLETE_TO_DO,
+    value,
+    index,
+  };
+}
+
 export function changeColor(color, index) {
   return {
     type: CHANGE_COLOR,
     color,
     index,
+  };
+}
+
+export function filterView(value) {
+  return {
+    type: FILTER_VIEW,
+    value,
   };
 }

@@ -1,12 +1,14 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+import classnames from 'classnames';
 import * as todoActions from '../actions/Todos';
 
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 import ContentSave from 'material-ui/lib/svg-icons/content/save';
 import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
+import ActionDone from 'material-ui/lib/svg-icons/action/done';
 import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import Paper from 'material-ui/lib/paper';
 
@@ -18,6 +20,7 @@ class TodoItem extends Component {
     this.handleEdit = this.handleEdit.bind(this);
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
     this.changeRowColor = this.changeRowColor.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -49,6 +52,13 @@ class TodoItem extends Component {
     this.props.actions.deleteToDo(index);
   }
 
+  handleComplete(e) {
+    e.stopPropagation();
+    const index = this.props.index;
+    const value = this.refs.todo.textContent;
+    this.props.actions.completeToDo(value, index);
+  }
+
   handleClick(e) {
     e.stopPropagation();
   }
@@ -68,44 +78,49 @@ class TodoItem extends Component {
       alignItems: 'center',
       backgroundColor: color,
     };
+
     return (
-      <ReactCSSTransitionGroup
-        transitionName="animatedRow"
-        transitionAppear
-        transitionAppearTimeout={300}
-      >
-        <li className="row" onMouseDown={this.changeRowColor}>
-          <Paper className="paper" ref="rowPaper" style={style} zDepth={1} >
+      <li key={this.props.index} className="row" onMouseDown={this.changeRowColor} >
+        <Paper className="paper" ref="rowPaper" style={style} zDepth={1} >
+        { this.props.todo.isEditting ?
+          <input
+            ref="edit"
+            className="edit"
+            maxLength="55"
+            defaultValue={this.props.todo.todo}
+            onKeyDown={this.handleSave}
+            onMouseDown={this.handleClick}
+          />
+          :
+          <div
+            ref="todo"
+            className={
+              classnames({
+                todo: true,
+                complete: this.props.todo.isComplete,
+              })}
+          >{this.props.todo.todo}</div>
+          }
+          <div className="buttons">
           { this.props.todo.isEditting ?
-            <input
-              ref="edit"
-              className="edit"
-              maxLength="55"
-              defaultValue={this.props.todo.todo}
-              onKeyDown={this.handleSave}
-              onMouseDown={this.handleClick}
-            />
+            <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleSave}>
+              <ContentSave />
+            </FloatingActionButton>
             :
-            <div ref="todo" className="todo">{this.props.todo.todo}</div>
+            <FloatingActionButton backgroundColor="#3c763d" onMouseDown={this.handleEdit}>
+              <EditorModeEdit />
+            </FloatingActionButton>
             }
-            <div className="buttons">
-            { this.props.todo.isEditting ?
-              <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleSave}>
-                <ContentSave />
-              </FloatingActionButton>
-              :
-              <FloatingActionButton backgroundColor="#3c763d" onMouseDown={this.handleEdit}>
-                <EditorModeEdit />
-              </FloatingActionButton>
-              }
-              {' '}
-              <FloatingActionButton backgroundColor="#d81e05" onMouseDown={this.handleDelete}>
-                <ActionDelete />
-              </FloatingActionButton>
-            </div>
-          </Paper>
-        </li>
-      </ReactCSSTransitionGroup>
+            {' '}
+            <FloatingActionButton backgroundColor="#d81e05" onMouseDown={this.handleDelete}>
+              <ActionDelete />
+            </FloatingActionButton>
+          </div>
+        </Paper>
+        <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleComplete}>
+          <ActionDone />
+        </FloatingActionButton>
+      </li>
     );
   }
 }

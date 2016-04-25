@@ -38,6 +38,10 @@ div.input {
   align-items: center;
 }
 
+.filter {
+  width: 150px;
+}
+
 div.todos {
   display: flex;
   justify-content: center;
@@ -67,6 +71,10 @@ div.todo {
   padding: 10px 0;
 }
 
+div.complete {
+  text-decoration: line-through;
+}
+
 div.textField {
   margin-right: 20px;
 }
@@ -78,6 +86,10 @@ div.buttons {
 ul.list {
   padding: 0;
   position: relative;
+}
+
+div.paper {
+  margin-right: 10px;
 }
 
 li.row {
@@ -93,11 +105,29 @@ li.row:hover{
 }
 
 /*fade in*/
-.animatedRow-appear {
-  opacity: 0.01;
+.animatedRow-enter {
+    opacity: 0;
+    transform:   translate(-250px,0);
+    transform: translate3d(-250px,0,0);
 }
-
-.animatedRow-appear.animatedRow-appear-active {
-  opacity: 1;
-  transition: opacity .3s ease-in;
+.animatedRow-enter.animatedRow-enter-active {
+	opacity: 1;
+	transform:   translate(0,0);
+	transform: translate3d(0,0,0);
+	transition-property: transform, opacity;
+	transition-duration: 600ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.animatedRow-leave {
+	opacity: 1;
+	transform:   translate(0,0,0);
+	transform: translate3d(0,0,0);
+	transition-property: transform, opacity;
+	transition-duration: 600ms;
+	transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+}
+.animatedRow-leave.animatedRow-leave-active {
+	opacity: 0;
+	transform:   translate(250px,0);
+	transform: translate3d(250px,0,0);
 }
