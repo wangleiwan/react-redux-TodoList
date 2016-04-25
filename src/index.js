@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import { Router, Route, hashHistory } from 'react-router';
 import './assets/css/todo.css';
+import './assets/css/animate.css';
 import configureStore from './app/store';
 
 import DevTools from './app/components/DevTools';

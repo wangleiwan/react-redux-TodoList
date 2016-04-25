@@ -51,16 +51,18 @@ class InputBar extends Component {
         <FloatingActionButton mini onMouseDown={this.handleAddToDo}>
           <ContentAdd />
         </FloatingActionButton>
-        <DropDownMenu
-          className="filter"
-          value={this.state.value}
-          autoWidth={false}
-          onChange={this.handleChange}
-        >
-          <MenuItem value={1} primaryText ="All" />
-          <MenuItem value={2} primaryText ="Completed" />
-          <MenuItem value={3} primaryText ="Active" />
-        </DropDownMenu>
+        <div className="filter-wrapper">
+          <DropDownMenu
+            className="filter"
+            value={this.state.value}
+            autoWidth={false}
+            onChange={this.handleChange}
+          >
+            <MenuItem style={{ width: '150px' }} value={1} primaryText ="All" />
+            <MenuItem style={{ width: '150px' }} value={2} primaryText ="Completed" />
+            <MenuItem style={{ width: '150px' }} value={3} primaryText ="Active" />
+          </DropDownMenu>
+        </div>
       </div>
     );
   }

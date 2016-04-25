@@ -11,6 +11,7 @@ import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import ActionDone from 'material-ui/lib/svg-icons/action/done';
 import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import Paper from 'material-ui/lib/paper';
+// import $ from 'jquery';
 
 import { colors } from '../constants/colors';
 
@@ -24,6 +25,14 @@ class TodoItem extends Component {
     this.changeRowColor = this.changeRowColor.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
+  //
+  // componentDidMount() {
+  //   const index = this.props.index;
+  //   $('.deleteButton').on('click', (e) => {
+  //     $(`li#${index}`).addClass('animated slideOutRight');
+  //     this.handleDelete(e);
+  //   });
+  // }
 
   handleEdit(e) {
     e.stopPropagation();
@@ -80,7 +89,12 @@ class TodoItem extends Component {
     };
 
     return (
-      <li key={this.props.index} className="row" onMouseDown={this.changeRowColor} >
+      <li
+        id={this.props.index}
+        key={this.props.index}
+        className="row"
+        onMouseDown={this.changeRowColor}
+      >
         <Paper className="paper" ref="rowPaper" style={style} zDepth={1} >
         { this.props.todo.isEditting ?
           <input
@@ -95,29 +109,45 @@ class TodoItem extends Component {
           <div
             ref="todo"
             className={
-              classnames({
-                todo: true,
-                complete: this.props.todo.isComplete,
-              })}
+            classnames({
+              todo: true,
+              complete: this.props.todo.isComplete,
+            })}
           >{this.props.todo.todo}</div>
           }
           <div className="buttons">
           { this.props.todo.isEditting ?
-            <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleSave}>
+            <FloatingActionButton
+              className="saveButton"
+              backgroundColor="steelblue"
+              onMouseDown={this.handleSave}
+            >
               <ContentSave />
             </FloatingActionButton>
             :
-            <FloatingActionButton backgroundColor="#3c763d" onMouseDown={this.handleEdit}>
+            <FloatingActionButton
+              className="editButton"
+              backgroundColor="#3c763d"
+              onMouseDown={this.handleEdit}
+            >
               <EditorModeEdit />
             </FloatingActionButton>
             }
             {' '}
-            <FloatingActionButton backgroundColor="#d81e05" onMouseDown={this.handleDelete}>
+            <FloatingActionButton
+              className="deleteButton"
+              backgroundColor="#d81e05"
+              onMouseDown={this.handleDelete}
+            >
               <ActionDelete />
             </FloatingActionButton>
           </div>
         </Paper>
-        <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleComplete}>
+        <FloatingActionButton
+          className="completeButton"
+          backgroundColor="steelblue"
+          onMouseDown={this.handleComplete}
+        >
           <ActionDone />
         </FloatingActionButton>
       </li>

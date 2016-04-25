@@ -38,7 +38,8 @@ div.input {
   align-items: center;
 }
 
-.filter {
+div.filter {
+  margin-left: 20px;
   width: 150px;
 }
 
