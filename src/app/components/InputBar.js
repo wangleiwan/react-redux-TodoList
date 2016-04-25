@@ -1,7 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
 import * as todoActions from '../actions/Todos';
 
 import TextField from 'material-ui/lib/text-field';
