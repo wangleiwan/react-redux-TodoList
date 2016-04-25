@@ -4,6 +4,7 @@ import { SAVE_TO_DO } from '../constants/ActionTypes';
 import { DELETE_TO_DO } from '../constants/ActionTypes';
 import { COMPLETE_TO_DO } from '../constants/ActionTypes';
 import { CHANGE_COLOR } from '../constants/ActionTypes';
+import { FILTER_VIEW } from '../constants/ActionTypes';
 
 const initialState = {
   todos: [
@@ -20,6 +21,7 @@ const initialState = {
       color: 'white',
     },
   ],
+  filter: 'all',
 };
 
 const ToDos = (state = initialState, action) => {
@@ -55,7 +57,8 @@ const ToDos = (state = initialState, action) => {
       return Object.assign({}, state, { todos: newTodos });
     }
     case COMPLETE_TO_DO: {
-      const newTodo = { ...state.todos[action.index], isComplete: true };
+      const newTodo = { ...state.todos[action.index],
+        isComplete: !state.todos[action.index].isComplete };
       const newTodos = [
         ...state.todos.slice(0, action.index),
         newTodo,
@@ -71,6 +74,18 @@ const ToDos = (state = initialState, action) => {
         ...state.todos.slice(action.index + 1),
       ];
       return Object.assign({}, state, { todos: newTodos });
+    }
+    case FILTER_VIEW: {
+      const value = action.value;
+      let newFilter;
+      if (value === 1) {
+        newFilter = 'all';
+      } else if (value === 2) {
+        newFilter = 'completed';
+      } else {
+        newFilter = 'active';
+      }
+      return Object.assign({}, state, { filter: newFilter });
     }
     default:
       return state;
