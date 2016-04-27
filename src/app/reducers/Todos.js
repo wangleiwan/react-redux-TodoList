@@ -46,7 +46,6 @@ const ToDos = (state = initialState, action) => {
         ...state.todos.slice(action.index + 1),
       ];
       const newState = Object.assign({}, state, { todos: newTodos });
-      // localforage.setItem('Todos', newState);
       return newState;
     }
     case SAVE_TO_DO: {
@@ -56,7 +55,9 @@ const ToDos = (state = initialState, action) => {
         newTodo,
         ...state.todos.slice(action.index + 1),
       ];
-      return Object.assign({}, state, { todos: newTodos });
+      const newState = Object.assign({}, state, { todos: newTodos });
+      localforage.setItem('Todos', newState);
+      return newState;
     }
     case DELETE_TO_DO: {
       const newTodos = [

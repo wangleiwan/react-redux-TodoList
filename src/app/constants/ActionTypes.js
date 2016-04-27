@@ -6,4 +6,3 @@ export const COMPLETE_TO_DO = 'COMPLETE_TO_DO';
 export const CHANGE_COLOR = 'CHANGE_COLOR';
 export const FILTER_VIEW = 'FILTER_VIEW';
 export const GET_INITIAL_TODOS = 'GET_INITIAL_TODOS';
-export const SET_INITIAL_TODOS = 'SET_INITIAL_TODOS';

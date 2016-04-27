@@ -15,7 +15,6 @@ export function getInitialTodos() {
         dispatch({ type: GET_INITIAL_TODOS, value: [] });
       } else {
         dispatch({ type: GET_INITIAL_TODOS, value });
-        console.log(value);
       }
     }).catch((err) => console.log(err));
   };

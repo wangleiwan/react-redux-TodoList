@@ -31,14 +31,7 @@ export default class TodoList extends Component {
     const activetodos = todos.filter((todo) =>
       todo.props.todo.isComplete === false
     );
-    // let todolist;
-    // if (this.props.todos.filter === 'all') {
-    //   todolist = todos;
-    // } else if (this.props.todos.filter === 'completed') {
-    //   todolist = completedtodos;
-    // } else {
-    //   todolist = activetodos;
-    // }
+
     return (
       <div className="todos">
         <ul className="list">

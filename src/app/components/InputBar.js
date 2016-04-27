@@ -56,12 +56,6 @@ class InputBar extends Component {
       e.target.focus();
     }
   }
-  //
-  // handleChange(e, i, value) {
-  //   const { actions } = this.props;
-  //   this.setState({ value });
-  //   actions.filterView(value);
-  // }
 
   render() {
     return (
