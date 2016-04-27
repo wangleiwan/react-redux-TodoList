@@ -1,10 +1,26 @@
 import React, { PropTypes, Component } from 'react';
 import TodoItem from './TodoItem';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as todoActions from '../actions/Todos';
+import { Tabs, Tab } from 'react-bootstrap';
 
 
 export default class TodoList extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.state = {
+      key: 1,
+    };
+  }
+
+  handleSelect(key) {
+    this.setState({ key });
+    this.props.actions.filterView(key);
+  }
+
   render() {
     const todos = this.props.todos.todos.map((todo, index) =>
       <TodoItem key={index} todo={todo} index={index} />
@@ -15,24 +31,19 @@ export default class TodoList extends Component {
     const activetodos = todos.filter((todo) =>
       todo.props.todo.isComplete === false
     );
-    let todolist;
-    if (this.props.todos.filter === 'all') {
-      todolist = todos;
-    } else if (this.props.todos.filter === 'completed') {
-      todolist = completedtodos;
-    } else {
-      todolist = activetodos;
-    }
+
     return (
       <div className="todos">
         <ul className="list">
-          <ReactCSSTransitionGroup
-            transitionName="animatedRow"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}
+          <Tabs
+            activeKey={this.state.key}
+            onSelect={this.handleSelect}
+            id="controlled-tab"
           >
-          { todolist }
-          </ReactCSSTransitionGroup>
+            <Tab eventKey={1} title="All">{' '}{todos}</Tab>
+            <Tab eventKey={2} title="Completed">{' '}{completedtodos}</Tab>
+            <Tab eventKey={3} title="Active">{' '}{activetodos}</Tab>
+          </Tabs>
         </ul>
       </div>
     );
@@ -45,8 +56,15 @@ const mapStateToProps = (state) => (
   }
 );
 
+const mapDispatchToProps = (dispatch) => (
+  {
+    actions: bindActionCreators(todoActions, dispatch),
+  }
+);
+
 TodoList.propTypes = {
   todos: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps, null)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

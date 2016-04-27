@@ -10,16 +10,19 @@ h1.title {
 }
 
 .container {
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .wrapper {
+  height: auto;
   width: 40%;
   min-width: 611px;
   display: flex;
   justify-content: center;
+  align-self: center;
   flex-direction: column;
   border: 0.1em solid steelblue;
   border-radius: 0.3em;
@@ -36,17 +39,20 @@ div.header {
 div.input {
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 div.filter {
   margin-left: 20px;
   width: 150px;
+  margin-left: 20px;
 }
 
 div.todos {
   display: flex;
   justify-content: center;
   align-self: center;
+  padding-top: 10px;
 }
 
 div.todo, input.edit {
@@ -99,10 +105,15 @@ li.row {
   align-items: center;
   margin-bottom: 10px;
   list-style: none;
+  padding-top: 10px;
 }
 
 li.row:hover{
   cursor: pointer;
+}
+
+div #controlled-tab {
+  width: 580px;
 }
 
 /*fade in*/

@@ -3,13 +3,15 @@ import thunk from 'redux-thunk';
 import rootReducer from '../reducers';
 import DevTools from '../components/DevTools';
 
-const enhancer = compose(
+const middleware = [thunk/* , syncHistory(hashHistory) */];
+const enhancers = compose(
+  applyMiddleware(...middleware),
   DevTools.instrument(),
+  // window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
 export default function configureStore(initialState) {
-  const middleware = [thunk/* , syncHistory(hashHistory) */];
-  const store = createStore(rootReducer, initialState, enhancer, applyMiddleware(...middleware));
+  const store = createStore(rootReducer, initialState, enhancers);
 
   return store;
 }

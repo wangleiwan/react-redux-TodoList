@@ -11,8 +11,6 @@ import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import ActionDone from 'material-ui/lib/svg-icons/action/done';
 import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import Paper from 'material-ui/lib/paper';
-// import $ from 'jquery';
-
 import { colors } from '../constants/colors';
 
 class TodoItem extends Component {
@@ -25,14 +23,6 @@ class TodoItem extends Component {
     this.changeRowColor = this.changeRowColor.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
-  //
-  // componentDidMount() {
-  //   const index = this.props.index;
-  //   $('.deleteButton').on('click', (e) => {
-  //     $(`li#${index}`).addClass('animated slideOutRight');
-  //     this.handleDelete(e);
-  //   });
-  // }
 
   handleEdit(e) {
     e.stopPropagation();
@@ -108,8 +98,7 @@ class TodoItem extends Component {
           :
           <div
             ref="todo"
-            className={
-            classnames({
+            className={classnames({
               todo: true,
               complete: this.props.todo.isComplete,
             })}
@@ -138,6 +127,7 @@ class TodoItem extends Component {
               className="deleteButton"
               backgroundColor="#d81e05"
               onMouseDown={this.handleDelete}
+              disabled={this.props.todo.isEditting}
             >
               <ActionDelete />
             </FloatingActionButton>
@@ -147,6 +137,7 @@ class TodoItem extends Component {
           className="completeButton"
           backgroundColor="steelblue"
           onMouseDown={this.handleComplete}
+          disabled={this.props.todo.isEditting}
         >
           <ActionDone />
         </FloatingActionButton>
