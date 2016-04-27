@@ -42,7 +42,8 @@ div.input {
   margin-bottom: 10px;
 }
 
-.filter {
+div.filter {
+  margin-left: 20px;
   width: 150px;
   margin-left: 20px;
 }

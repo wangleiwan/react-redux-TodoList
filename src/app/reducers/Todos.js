@@ -100,7 +100,7 @@ const ToDos = (state = initialState, action) => {
         newFilter = 'active';
       }
       const newState = Object.assign({}, state, { filter: newFilter });
-      localforage.setItem('Todos', newState);
+      // localforage.setItem('Todos', newState);
       return newState;
     }
     default:
