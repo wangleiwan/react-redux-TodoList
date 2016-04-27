@@ -13,7 +13,6 @@ import { colors } from '../constants/colors';
 const initialState = {};
 
 const ToDos = (state = initialState, action) => {
-  localforage.setItem('Todos', state);
   switch (action.type) {
     case GET_INITIAL_TODOS: {
       let newState;
@@ -96,11 +95,10 @@ const ToDos = (state = initialState, action) => {
         newFilter = 'all';
       } else if (value === 2) {
         newFilter = 'completed';
-      } else {
+      } else if (value === 3) {
         newFilter = 'active';
-      }
+      } else { return newFilter; }
       const newState = Object.assign({}, state, { filter: newFilter });
-      // localforage.setItem('Todos', newState);
       return newState;
     }
     default:

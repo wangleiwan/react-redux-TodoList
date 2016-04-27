@@ -40,9 +40,9 @@ export default class TodoList extends Component {
             onSelect={this.handleSelect}
             id="controlled-tab"
           >
-            <Tab eventKey={1} title="All">{' '}{todos}</Tab>
-            <Tab eventKey={2} title="Completed">{' '}{completedtodos}</Tab>
-            <Tab eventKey={3} title="Active">{' '}{activetodos}</Tab>
+            <Tab eventKey={1} title="All">{todos}</Tab>
+            <Tab eventKey={2} title="Completed">{completedtodos}</Tab>
+            <Tab eventKey={3} title="Active">{activetodos}</Tab>
           </Tabs>
         </ul>
       </div>
