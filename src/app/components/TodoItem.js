@@ -11,7 +11,6 @@ import ActionDelete from 'material-ui/lib/svg-icons/action/delete';
 import ActionDone from 'material-ui/lib/svg-icons/action/done';
 import EditorModeEdit from 'material-ui/lib/svg-icons/editor/mode-edit';
 import Paper from 'material-ui/lib/paper';
-
 import { colors } from '../constants/colors';
 
 class TodoItem extends Component {
@@ -94,11 +93,10 @@ class TodoItem extends Component {
           :
           <div
             ref="todo"
-            className={
-              classnames({
-                todo: true,
-                complete: this.props.todo.isComplete,
-              })}
+            className={classnames({
+              todo: true,
+              complete: this.props.todo.isComplete,
+            })}
           >{this.props.todo.todo}</div>
           }
           <div className="buttons">
@@ -112,12 +110,20 @@ class TodoItem extends Component {
             </FloatingActionButton>
             }
             {' '}
-            <FloatingActionButton backgroundColor="#d81e05" onMouseDown={this.handleDelete}>
+            <FloatingActionButton
+              backgroundColor="#d81e05"
+              onMouseDown={this.handleDelete}
+              disabled={this.props.todo.isEditting}
+            >
               <ActionDelete />
             </FloatingActionButton>
           </div>
         </Paper>
-        <FloatingActionButton backgroundColor="steelblue" onMouseDown={this.handleComplete}>
+        <FloatingActionButton
+          backgroundColor="steelblue"
+          onMouseDown={this.handleComplete}
+          disabled={this.props.todo.isEditting}
+        >
           <ActionDone />
         </FloatingActionButton>
       </li>
