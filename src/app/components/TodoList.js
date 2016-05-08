@@ -18,7 +18,7 @@ export default class TodoList extends Component {
 
   handleSelect(key) {
     this.setState({ key });
-    this.props.actions.filterView(key);
+    // this.props.actions.filterView(key);
   }
 
   render() {

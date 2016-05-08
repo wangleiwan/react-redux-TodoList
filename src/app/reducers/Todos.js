@@ -4,7 +4,7 @@ import { SAVE_TO_DO } from '../constants/ActionTypes';
 import { DELETE_TO_DO } from '../constants/ActionTypes';
 import { COMPLETE_TO_DO } from '../constants/ActionTypes';
 import { CHANGE_COLOR } from '../constants/ActionTypes';
-import { FILTER_VIEW } from '../constants/ActionTypes';
+// import { FILTER_VIEW } from '../constants/ActionTypes';
 import { GET_INITIAL_TODOS } from '../constants/ActionTypes';
 import localforage from 'localforage';
 
@@ -17,7 +17,7 @@ const ToDos = (state = initialState, action) => {
     case GET_INITIAL_TODOS: {
       let newState;
       if (Array.isArray(action.value)) {
-        newState = Object.assign({}, state, { todos: action.value, filter: 'all' });
+        newState = Object.assign({}, state, { todos: action.value });
       } else {
         newState = Object.assign({}, state, action.value);
       }
@@ -88,19 +88,19 @@ const ToDos = (state = initialState, action) => {
       ];
       return Object.assign({}, state, { todos: newTodos });
     }
-    case FILTER_VIEW: {
-      const value = action.value;
-      let newFilter;
-      if (value === 1) {
-        newFilter = 'all';
-      } else if (value === 2) {
-        newFilter = 'completed';
-      } else if (value === 3) {
-        newFilter = 'active';
-      } else { return newFilter; }
-      const newState = Object.assign({}, state, { filter: newFilter });
-      return newState;
-    }
+    // case FILTER_VIEW: {
+    //   const value = action.value;
+    //   let newFilter;
+    //   if (value === 1) {
+    //     newFilter = 'all';
+    //   } else if (value === 2) {
+    //     newFilter = 'completed';
+    //   } else if (value === 3) {
+    //     newFilter = 'active';
+    //   } else { return newFilter; }
+    //   const newState = Object.assign({}, state, { filter: newFilter });
+    //   return newState;
+    // }
     default:
       return state;
   }

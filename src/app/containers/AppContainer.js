@@ -18,24 +18,16 @@ class AppContainer extends Component {
       return (
         <div className="container">
           <div className="wrapper">
-            <Header todoItems={0} />
+            <Header />
           </div>
         </div>
       );
     }
-    const completedtodos = todos.todos.filter((todo) => todo.isComplete === true);
-    let todoItems;
-    if (todos.filter === 'all') {
-      todoItems = todos.todos.length;
-    } else if (todos.filter === 'completed') {
-      todoItems = completedtodos.length;
-    } else {
-      todoItems = todos.todos.length - completedtodos.length;
-    }
+
     return (
       <div className="container">
         <div className="wrapper">
-          <Header todoItems={todoItems} />
+          <Header />
           <TodoList />
         </div>
       </div>
