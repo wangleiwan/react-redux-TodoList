@@ -18,7 +18,7 @@ h1.title {
 
 .wrapper {
   height: auto;
-  width: 40%;
+  width: 50%;
   min-width: 611px;
   display: flex;
   justify-content: center;
@@ -40,12 +40,6 @@ div.input {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-}
-
-div.filter {
-  margin-left: 20px;
-  width: 150px;
-  margin-left: 20px;
 }
 
 div.todos {
@@ -87,23 +81,26 @@ div.textField {
 }
 
 div.buttons {
+  display: flex;
+  justify-content: space-around;
   margin-right: 10px;
+}
+
+.saveButton, .editButton, .deleteButton {
+  margin-right: 5px;
 }
 
 ul.list {
   padding: 0;
-  position: relative;
 }
 
 div.paper {
-  margin-right: 10px;
+  width: 580px;
+  /*margin-right: 10px;*/
 }
 
 li.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  margin: 0px 0px 10px 0px;
   list-style: none;
   padding-top: 10px;
 }
@@ -111,13 +108,12 @@ li.row {
 li.row:hover{
   cursor: pointer;
 }
-
 div #controlled-tab {
   width: 580px;
 }
 
 /*fade in*/
-.animatedRow-enter {
+/*.animatedRow-enter {
     opacity: 0;
     transform:   translate(-250px,0);
     transform: translate3d(-250px,0,0);
@@ -142,4 +138,4 @@ div #controlled-tab {
 	opacity: 0;
 	transform:   translate(250px,0);
 	transform: translate3d(250px,0,0);
-}
+}*/

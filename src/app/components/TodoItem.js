@@ -70,14 +70,13 @@ class TodoItem extends Component {
   render() {
     const color = this.props.todo.color;
     const style = {
-      width: 500,
+      width: 580,
       height: 70,
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       backgroundColor: color,
     };
-
     return (
       <li
         id={this.props.index}
@@ -131,16 +130,17 @@ class TodoItem extends Component {
             >
               <ActionDelete />
             </FloatingActionButton>
+            <FloatingActionButton
+              className="completeButton"
+              backgroundColor="steelblue"
+              onMouseDown={this.handleComplete}
+              disabled={this.props.todo.isEditting}
+            >
+              <ActionDone />
+            </FloatingActionButton>
           </div>
         </Paper>
-        <FloatingActionButton
-          className="completeButton"
-          backgroundColor="steelblue"
-          onMouseDown={this.handleComplete}
-          disabled={this.props.todo.isEditting}
-        >
-          <ActionDone />
-        </FloatingActionButton>
+
       </li>
     );
   }

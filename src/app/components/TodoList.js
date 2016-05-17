@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import TodoItem from './TodoItem';
+import { VelocityTransitionGroup } from 'velocity-react';
 // import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -40,9 +41,30 @@ export default class TodoList extends Component {
             onSelect={this.handleSelect}
             id="controlled-tab"
           >
-            <Tab eventKey={1} title="All">{todos}</Tab>
-            <Tab eventKey={2} title="Completed">{completedtodos}</Tab>
-            <Tab eventKey={3} title="Active">{activetodos}</Tab>
+            <Tab eventKey={1} title="All">
+              <VelocityTransitionGroup
+                enter={{ animation: 'slideDown' }}
+                leave={{ animation: 'slideUp' }}
+              >
+                {todos}
+              </VelocityTransitionGroup>
+            </Tab>
+            <Tab eventKey={2} title="Completed">
+              <VelocityTransitionGroup
+                enter={{ animation: 'slideDown' }}
+                leave={{ animation: 'slideUp' }}
+              >
+                {completedtodos}
+              </VelocityTransitionGroup>
+            </Tab>
+            <Tab eventKey={3} title="Active">
+              <VelocityTransitionGroup
+                enter={{ animation: 'slideDown' }}
+                leave={{ animation: 'slideUp' }}
+              >
+                {activetodos}
+              </VelocityTransitionGroup>
+            </Tab>
           </Tabs>
         </ul>
       </div>
