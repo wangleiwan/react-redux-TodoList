@@ -1,2 +1,2 @@
 # react-redux-webpack-todo-list
-react-webpack todo list
+A simple React, Redux implementation with webpack
